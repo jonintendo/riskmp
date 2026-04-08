@@ -17,7 +17,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     jvm()
 
     listOf(
@@ -49,7 +49,7 @@ kotlin {
             //implementation(project(":karta"))
 
             implementation(libs.http)
-           // implementation(project(":httpkmp"))
+            //implementation(project(":http"))
 
             implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 //            implementation("org.jetbrains.kotlinx:dataframe:1.0.0-Beta4")

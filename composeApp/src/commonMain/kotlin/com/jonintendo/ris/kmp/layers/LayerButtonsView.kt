@@ -12,6 +12,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
@@ -34,6 +35,8 @@ import com.jonintendo.ris.kmp.utils.encbase
 import com.jonintendo.ris.kmp.utils.encstandard
 import com.jonintendo.ris.kmp.utils.lightGray
 import com.jonintendo.ris.kmp.utils.noland
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import systems.untangle.karta.network.TileServer
 
 @Composable
@@ -50,6 +53,8 @@ fun LayerButtonsView(
 
 
     var menuButtonOptions by remember { mutableStateOf(MenuButtonOptions.INICIO) }
+    val scope = rememberCoroutineScope()
+
 
     fun changeLayer(tileServerOption: TileServerOption) {
         if (tileLayersServer.any { it.tileUrl == tileServerOption.server.tileUrl })
@@ -63,6 +68,13 @@ fun LayerButtonsView(
     fun takeButtonLayerColor(tileServerOption: TileServerOption): Color {
         var color = lightGray
         if (tileLayersServer.any { it.tileUrl == tileServerOption.server.tileUrl })
+            color = darkBlue
+        return color
+    }
+
+    fun takeButtonMapColor(tileServerOption: TileServerOption): Color {
+        var color = lightGray
+        if (tileServer.value.server.tileUrl == tileServerOption.server.tileUrl)
             color = darkBlue
         return color
     }
@@ -86,33 +98,47 @@ fun LayerButtonsView(
 
                 MenuButtonOptions.MAPAS -> {
                     Text("Mapas")
-                    MapButton({ tileServer.value = humanitaire }, "Humanitaire")
-                    MapButton({ tileServer.value = cyclo }, "Cyclo")
+                    MapButton(
+                        { tileServer.value = humanitaire },
+                        humanitaire.name,
+                        takeButtonMapColor(humanitaire)
+                    )
+                    MapButton(
+                        { tileServer.value = cyclo },
+                        cyclo.name,
+                        takeButtonMapColor(cyclo)
+                    )
 
                     Text("Camadas")
                     MapButton({ changeLayer(noland) }, noland.name, takeButtonLayerColor(noland))
                     MapButton({ changeLayer(encbase) }, encbase.name, takeButtonLayerColor(encbase))
-                    MapButton({ changeLayer(encstandard) }, encstandard.name, takeButtonLayerColor(encstandard))
+                    MapButton(
+                        { changeLayer(encstandard) },
+                        encstandard.name,
+                        takeButtonLayerColor(encstandard)
+                    )
                     MapButton({ changeLayer(encall) }, encall.name, takeButtonLayerColor(encall))
                     // MapButton({ tileLayersServer.clear() }, "NONE")
 
                 }
 
                 MenuButtonOptions.MISSAO -> {
-                    MapButton({ viewModel.mission.clearWaypoints() }, "Clear")
+                    MapButton({ viewModel.mission.clearWaypoints() }, "CLEAR")
                     MapButton({
                         onLongPress.value = { position ->
                             viewModel.mission.addWaypoint(position.coordinates)
                         }
                         println("${onLongPress.value}sssssssssssssssssssssssssssssssssssssssssssssssss")
-                    }, "Set")
+                    }, "SET")
 
-                    MapButton({ viewModel.mission.moveWayPoint(1) }, "Move")
+                    MapButton({ viewModel.mission.moveWayPoint(1) }, "MOVE")
+                    MapButton({ scope.launch { viewModel.mission.sendWayPoints()} }, "SEND")
                 }
 
                 MenuButtonOptions.ROTAS -> {
                     MapButton({ viewModel.rota.clearWayPoints() }, "CLEAR")
-                    MapButton({ viewModel.rota.detectRotasWayPoints(rotas) }, "GET")
+                   // MapButton({ viewModel.rota.detectRotasWayPoints(rotas) }, "GET2")
+                    MapButton({ scope.launch { viewModel.rota.getRotas() } }, "GET")
                 }
 
                 MenuButtonOptions.TESTES -> {

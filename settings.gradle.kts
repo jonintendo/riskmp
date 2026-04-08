@@ -37,4 +37,6 @@ plugins {
 
 include(":composeApp")
 
-include(":karta")
+//include(":karta")
+include(":http")
+

@@ -8,10 +8,10 @@ data class RotasItem(
     val dataHoraInicio: String?,
     val detectarNavegacaoBidirecional: Boolean,
     val id: Int,
-    val latitudeMaxima: String?,
-    val latitudeMinima: String?,
-    val longitudeMaxima: String?,
-    val longitudeMinima: String?,
+    val latitudeMaxima: Double?,
+    val latitudeMinima: Double?,
+    val longitudeMaxima: Double?,
+    val longitudeMinima: Double?,
     val nome: String,
     val pernadas: List<Pernada>,
     val sar: String?
@@ -19,7 +19,7 @@ data class RotasItem(
     @Serializable
     data class Pernada(
         val canal: Canal,
-        val id: Int,
+       // val id: Int,
         val larguraBB: Double,
         val larguraBE: Double,
         val numeroPernada: Int,
@@ -41,7 +41,7 @@ data class RotasItem(
 
         @Serializable
         data class WaypointFinal(
-            val id: Int,
+           // val id: Int,
             val latitude: Double,
             val longitude: Double,
             val nome: String?
@@ -49,7 +49,7 @@ data class RotasItem(
 
         @Serializable
         data class WaypointInicial(
-            val id: Int,
+            //val id: Int,
             val latitude: Double,
             val longitude: Double,
             val nome: String?
