@@ -46,7 +46,7 @@ slf4f = { group = "org.slf4j", name = "slf4j-android", version.ref = "slf4j" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-java = { module = "io.ktor:ktor-client-java", version.ref = "ktor" }
-
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp",version.ref = "ktor"}
 
 ktor-serverCore = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
 ktor-serverCore-jvm = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor" }

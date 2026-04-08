@@ -32,6 +32,7 @@ import systems.untangle.karta.base.LocalZoom
 import systems.untangle.karta.conversion.latitudeDMS
 import systems.untangle.karta.conversion.longitudeDMS
 import systems.untangle.karta.input.PointerPosition
+import systems.untangle.karta.network.TileServer
 import systems.untangle.karta.popup.Popup
 import systems.untangle.karta.popup.PopupItem
 import systems.untangle.karta.popup.rememberPopupContext
@@ -41,6 +42,7 @@ import systems.untangle.karta.selection.rememberSelectionContext
 fun KartaView2(viewModel: MainViewModel) {
 
     val tileServer = remember { mutableStateOf(humanitaire) }
+    val tileLayersServer = remember { mutableStateListOf<TileServer>() }
     val createdPins = remember { mutableStateListOf<PointOfInterest>() }
     val movableCreatedPins = remember { mutableStateListOf<PointOfInterest>() }
     val createdCircles = remember { mutableStateListOf<PointOfInterest>() }
@@ -93,6 +95,7 @@ fun KartaView2(viewModel: MainViewModel) {
 
     Karta(
         tileServer = tileServer.value.server,
+        tileLayerServers = tileLayersServer,
         initialCoords = home,
         initialZoom = 14,
         interactive = interactive.value,
@@ -140,7 +143,7 @@ fun KartaView2(viewModel: MainViewModel) {
         LayerMissionView(viewModel)
         // LayerCreatedView(selectionContext,popupContext,createdPins,movableCreatedPins,createdCircles)
         //LayerZoomView(zoom)
-        LayerButtonsView(viewModel, tileServer, interactive, onLongPress)
+        LayerButtonsView(viewModel, tileServer, tileLayersServer,interactive, onLongPress)
        // LayerExampleView(selectionContext)
         LayerRotasView(viewModel)
     }

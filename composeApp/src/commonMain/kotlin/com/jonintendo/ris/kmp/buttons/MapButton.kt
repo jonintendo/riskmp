@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.jonintendo.ris.kmp.utils.lightGray
 
 @Composable
-fun MapButton(onclick: () -> Unit, text: String) {
+fun MapButton(onclick: () -> Unit, text: String,color: Color = lightGray) {
     Button(
         modifier = Modifier
             .width(100.dp)
@@ -25,7 +25,7 @@ fun MapButton(onclick: () -> Unit, text: String) {
             onclick()
         },
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = lightGray,
+            backgroundColor = color,
             contentColor = Color.White
         )
     ) {
