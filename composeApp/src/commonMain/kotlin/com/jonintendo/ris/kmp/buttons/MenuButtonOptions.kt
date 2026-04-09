@@ -5,5 +5,7 @@ enum class MenuButtonOptions {
     MAPAS,
     ROTAS,
     MISSAO,
+
+    AVISOS,
     TESTES
 }

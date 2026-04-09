@@ -16,4 +16,10 @@ class MainViewModel : ViewModel() {
     fun changeFrame() {
         frame_.value = "nossaaaa!!!!"
     }
+
+    private val aviso_ = MutableStateFlow(false)
+    val aviso: StateFlow<Boolean> = aviso_.asStateFlow()
+    fun showAviso() {
+        aviso_.value = !aviso_.value
+    }
 }

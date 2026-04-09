@@ -141,8 +141,11 @@ fun LayerButtonsView(
                     MapButton({ scope.launch { viewModel.rota.getRotas() } }, "GET")
                 }
 
+                MenuButtonOptions.AVISOS -> {
+                    MapButton({ viewModel.showAviso() }, "RECENTES")
+                }
                 MenuButtonOptions.TESTES -> {
-                    MapButton({ viewModel.changeFrame() }, "${frame}")
+                    MapButton({ viewModel.changeFrame() }, frame)
                     MapButton({ interactive.value = !interactive.value }, "Interactive")
                 }
             }
