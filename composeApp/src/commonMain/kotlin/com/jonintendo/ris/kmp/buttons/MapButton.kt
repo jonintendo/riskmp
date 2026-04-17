@@ -17,7 +17,7 @@ import com.jonintendo.ris.kmp.utils.lightGray
 fun MapButton(onclick: () -> Unit, text: String,color: Color = lightGray) {
     Button(
         modifier = Modifier
-            .width(100.dp)
+            .width(120.dp)
             .border(1.dp, Color.Black, RoundedCornerShape(8.dp))
             .height(35.dp),
 

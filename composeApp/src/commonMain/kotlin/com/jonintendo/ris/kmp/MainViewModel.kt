@@ -28,6 +28,7 @@ class MainViewModel : ViewModel() {
         frame_.value = "nossaaaa!!!!"
     }
 
+
     val acompanhamentos_ = mutableStateListOf<Coordinates>()
     //val acompanhamentos: StateFlow<List<Coordinates>> = acompanhamentos_.asStateFlow()
 
@@ -89,5 +90,12 @@ class MainViewModel : ViewModel() {
         sendToPort("\$GPRMC,140927.000,V,2251.633,S,04311.040,W,5.8,336.3,170426,000.0,W,*48")
     }
 
+
+
+    private val aviso_ = MutableStateFlow(false)
+    val aviso: StateFlow<Boolean> = aviso_.asStateFlow()
+    fun showAviso() {
+        aviso_.value = !aviso_.value
+    }
 
 }
