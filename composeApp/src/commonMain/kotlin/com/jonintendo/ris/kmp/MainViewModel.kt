@@ -73,12 +73,12 @@ class MainViewModel : ViewModel() {
 
     fun sendToPort(message: String) = customScope.launch {
         val selectorManager = SelectorManager(Dispatchers.IO)
-        val socket = aSocket(selectorManager).udp().connect(InetSocketAddress("127.0.0.1", 50100))
+        val socket = aSocket(selectorManager).udp().connect(InetSocketAddress("172.28.14.246", 50100))
 
         socket.outgoing.send(
             Datagram(
                 ByteReadPacket(message.toByteArray()),
-                InetSocketAddress("127.0.0.1", 50100)
+                InetSocketAddress("172.28.14.246", 50100)
             )
         )
 
