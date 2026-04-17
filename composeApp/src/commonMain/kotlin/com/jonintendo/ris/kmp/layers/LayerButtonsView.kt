@@ -144,6 +144,10 @@ fun LayerButtonsView(
                 MenuButtonOptions.TESTES -> {
                     MapButton({ viewModel.changeFrame() }, "${frame}")
                     MapButton({ interactive.value = !interactive.value }, "Interactive")
+                    MapButton({ viewModel.startReceivePort()}, "Start_Socket")
+                    MapButton({ viewModel.stopReceivePort()}, "Stop_Socket")
+                    MapButton({ viewModel.sendToPort("teste")}, "Send")
+                    MapButton({ viewModel.sendNMEA()}, "Send NMEA")
                 }
             }
 

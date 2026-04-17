@@ -34,6 +34,7 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation("net.sf.marineapi:marineapi:0.12.0")
         }
 
         commonMain.dependencies {
@@ -53,6 +54,8 @@ kotlin {
 
             implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 //            implementation("org.jetbrains.kotlinx:dataframe:1.0.0-Beta4")
+            implementation("io.ktor:ktor-network:3.3.0")
+
         }
 
         commonTest.dependencies {
@@ -62,6 +65,7 @@ kotlin {
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutinesSwing)
+            implementation("net.sf.marineapi:marineapi:0.12.0")
         }
 
         iosMain.dependencies {
