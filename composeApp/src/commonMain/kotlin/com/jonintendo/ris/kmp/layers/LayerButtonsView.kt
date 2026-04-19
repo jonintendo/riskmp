@@ -28,6 +28,7 @@ import com.jonintendo.ris.kmp.utils.humanitaire
 import org.jetbrains.compose.resources.stringResource
 import systems.untangle.karta.input.PointerPosition
 import com.jonintendo.ris.kmp.Res
+import com.jonintendo.ris.kmp.avisos
 import com.jonintendo.ris.kmp.rotas
 import com.jonintendo.ris.kmp.utils.darkBlue
 import com.jonintendo.ris.kmp.utils.encall
@@ -50,6 +51,7 @@ fun LayerButtonsView(
 
     val frame by viewModel.frame.collectAsState()
     val rotas = stringResource(Res.string.rotas)
+    val avisos = stringResource(Res.string.avisos)
 
 
     var menuButtonOptions by remember { mutableStateOf(MenuButtonOptions.INICIO) }
@@ -142,7 +144,8 @@ fun LayerButtonsView(
                 }
 
                 MenuButtonOptions.AVISOS -> {
-                    MapButton({ viewModel.showAviso() }, "RECENTES")
+                    //MapButton({ viewModel.showAviso() }, "RECENTES")
+                    MapButton({ viewModel.avisos.detectAvisos(avisos) }, "RECENTES")
                 }
                 MenuButtonOptions.TESTES -> {
                     MapButton({ viewModel.changeFrame() }, frame)

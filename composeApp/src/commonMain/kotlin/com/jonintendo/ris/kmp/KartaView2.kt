@@ -19,7 +19,9 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.jonintendo.ris.kmp.layers.LayerAcompanhamentos
+import com.jonintendo.ris.kmp.layers.LayerAvisos
 import com.jonintendo.ris.kmp.layers.LayerButtonsView
+import com.jonintendo.ris.kmp.layers.LayerExampleView
 import com.jonintendo.ris.kmp.layers.LayerMissionView
 import com.jonintendo.ris.kmp.layers.LayerRotasView
 import com.jonintendo.ris.kmp.utils.PointOfInterest
@@ -145,7 +147,8 @@ fun KartaView2(viewModel: MainViewModel) {
         // LayerCreatedView(selectionContext,popupContext,createdPins,movableCreatedPins,createdCircles)
         //LayerZoomView(zoom)
         LayerButtonsView(viewModel, tileServer, tileLayersServer,interactive, onLongPress)
-       // LayerExampleView(selectionContext)
+        LayerExampleView(selectionContext)
         LayerRotasView(viewModel)
+        LayerAvisos(viewModel)
     }
 }

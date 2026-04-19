@@ -134,7 +134,7 @@ fun LayerExampleView(selectionContext: SelectionFlowContext) {
     Polyline(
         coordsList = rota,
         strokeColor = Color.Blue,
-        strokeWidth = 5.0f
+        strokeWidth = 5.0f,
     )
 
 

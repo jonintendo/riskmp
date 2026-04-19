@@ -3,6 +3,7 @@ package com.jonintendo.ris.kmp
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jonintendo.ris.kmp.avisos.Aviso
 import com.jonintendo.ris.kmp.mission.Mission
 import com.jonintendo.ris.kmp.rotas.Rota
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,6 +22,8 @@ import systems.untangle.karta.data.Coordinates
 class MainViewModel : ViewModel() {
     val rota = Rota()
     val mission = Mission()
+
+    val avisos = Aviso()
 
     private val frame_ = MutableStateFlow("sdf")
     val frame: StateFlow<String> = frame_.asStateFlow()
